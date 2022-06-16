@@ -7,12 +7,16 @@ import 'package:rxdart/rxdart.dart';
 part 'bloc_event.dart';
 part 'bloc_state.dart';
 
+typedef OnEvent = Future<void> Function(BlocEvent event);
+
 /// Bloc consuming events and producing states.
 abstract class Bloc {
   Bloc({required BlocState initialState}) {
     _stateOutputStream = BehaviorSubject<BlocState>.seeded(initialState);
-    _eventInputStream.stream.listen(mapEventToState);
+    _eventInputStream.stream.listen(_mapEventToHandler);
   }
+
+  final Map<Type, OnEvent> _handlers = {};
 
   // Input
   final _eventInputStream = StreamController<BlocEvent>();
@@ -23,7 +27,18 @@ abstract class Bloc {
   Stream<BlocState> get stateStream => _stateOutputStream.stream;
 
   // Handler
-  Future<void> mapEventToState(BlocEvent event);
+  Future<void> _mapEventToHandler(BlocEvent event) async {
+    Type type = event.runtimeType;
+    if (_handlers.containsKey(type)) {
+      OnEvent foo = _handlers[type] as OnEvent;
+      await foo(event);
+    }
+  }
+
+  // Set event handler
+  void on(BlocEvent event, OnEvent handler) {
+    _handlers[event.runtimeType] = handler;
+  }
 
   // Add event
   void add(BlocEvent event) {

@@ -1,20 +1,20 @@
 import 'package:flutter/widgets.dart';
-import 'package:provider/provider.dart';
 
-import 'bloc_lite.dart';
-
-/// Provides a bloc to it's decendants.
-abstract class BlocProvider<BlocT> extends Provider {
-  BlocProvider(
-    Key? key, {
+class BlocProvider<BlocT> extends InheritedWidget {
+  const BlocProvider({
+    Key? key,
     required this.bloc,
     required Widget child,
-  }) : super();
+  }) : super(key: key, child: child);
 
   final BlocT bloc;
 
-  static BlocT of<T extends Bloc>(BuildContext context) {
-    final BlocProvider? result = Provider.of<BlocT>(context) as BlocProvider?;
+  static BlocProvider of<BlocT>(BuildContext context) {
+    final BlocProvider? result =
+        context.dependOnInheritedWidgetOfExactType<BlocProvider<BlocT>>();
+
+    assert(result != null, 'No ${BlocT.toString()} found in context');
+
     return result!;
   }
 

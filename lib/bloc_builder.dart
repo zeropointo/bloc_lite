@@ -3,7 +3,8 @@ import 'package:flutter/widgets.dart';
 import 'bloc_lite.dart';
 import 'bloc_provider.dart';
 
-typedef BlocStateBuilder<S> = Widget Function(BuildContext context, S state);
+typedef BlocStateBuilder<StateT> = Widget Function(
+    BuildContext context, StateT state);
 
 abstract class BlocBuilder extends StatelessWidget {
   const BlocBuilder({Key? key, required this.context, required this.builder})

@@ -1,7 +1,4 @@
-import 'package:flutter/widgets.dart';
-
-import 'bloc_lite.dart';
-import 'bloc_provider.dart';
+part of 'bloc_lite.dart';
 
 typedef BlocStateBuilder<StateT> = Widget Function(
     BuildContext context, StateT state);

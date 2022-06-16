@@ -1,4 +1,4 @@
-import 'package:flutter/widgets.dart';
+part of 'bloc_lite.dart';
 
 class BlocProvider<BlocT> extends InheritedWidget {
   const BlocProvider({

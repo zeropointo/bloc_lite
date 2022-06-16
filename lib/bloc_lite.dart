@@ -3,9 +3,12 @@ library bloc_lite;
 import 'dart:async';
 import 'package:equatable/equatable.dart';
 import 'package:rxdart/rxdart.dart';
+import 'package:flutter/widgets.dart';
 
 part 'bloc_event.dart';
 part 'bloc_state.dart';
+part 'bloc_provider.dart';
+part 'bloc_builder.dart';
 
 typedef OnEvent = Future<void> Function(BlocEvent event);
 

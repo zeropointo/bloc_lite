@@ -39,8 +39,8 @@ abstract class Bloc {
   }
 
   // Set event handler
-  void on(BlocEvent event, OnEvent handler) {
-    _handlers[event.runtimeType] = handler;
+  void on(Type event, OnEvent handler) {
+    _handlers[event] = handler;
   }
 
   // Add event

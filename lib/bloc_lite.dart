@@ -10,7 +10,7 @@ part 'bloc_state.dart';
 part 'bloc_provider.dart';
 part 'bloc_builder.dart';
 
-typedef OnEvent = Future<void> Function(BlocEvent event);
+typedef OnEvent = Future<void> Function<EventT>(EventT event);
 
 /// Bloc consuming events and producing states.
 abstract class Bloc {

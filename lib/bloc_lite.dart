@@ -28,6 +28,7 @@ abstract class Bloc {
   // Output
   late BehaviorSubject<BlocState> _stateOutputStream;
   Stream<BlocState> get stateStream => _stateOutputStream.stream;
+  BlocState get state => _stateOutputStream.value;
 
   // Handler
   Future<void> _mapEventToHandler(BlocEvent event) async {

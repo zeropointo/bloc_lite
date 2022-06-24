@@ -10,7 +10,7 @@ part 'bloc_state.dart';
 part 'bloc_provider.dart';
 part 'bloc_builder.dart';
 
-typedef OnEvent = Future<void> Function<EventT>(EventT event);
+typedef OnEvent<EventT> = Future<void> Function(EventT event);
 
 /// Bloc consuming events and producing states.
 abstract class Bloc {
@@ -19,7 +19,7 @@ abstract class Bloc {
     _eventInputStream.stream.listen(_mapEventToHandler);
   }
 
-  final Map<Type, OnEvent> _handlers = {};
+  final Map<Type, dynamic> _handlers = {};
 
   // Input
   final _eventInputStream = StreamController<BlocEvent>();
@@ -39,8 +39,8 @@ abstract class Bloc {
   }
 
   // Set event handler
-  void on(Type event, OnEvent handler) {
-    _handlers[event] = handler;
+  void on<EventT>(OnEvent<EventT> handler) {
+    _handlers[EventT] = handler;
   }
 
   // Add event

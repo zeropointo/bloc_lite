@@ -34,7 +34,7 @@ abstract class Bloc {
   Future<void> _mapEventToHandler(BlocEvent event) async {
     Type type = event.runtimeType;
     if (_handlers.containsKey(type)) {
-      OnEvent foo = _handlers[type];
+      final foo = _handlers[type];
       await foo(event);
     }
   }

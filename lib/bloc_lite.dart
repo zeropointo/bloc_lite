@@ -7,7 +7,7 @@ import 'package:flutter/widgets.dart';
 
 part 'bloc_event.dart';
 part 'bloc_state.dart';
-part 'bloc_provider.dart';
+part 'object_provider.dart';
 part 'bloc_builder.dart';
 
 typedef OnEvent<EventT> = Future<void> Function(EventT event);

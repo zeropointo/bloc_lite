@@ -12,7 +12,7 @@ class BlocBuilder<BlocT> extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Bloc bloc = BlocProvider.of<BlocT>(context).bloc;
+    Bloc bloc = ObjectProvider.of<BlocT>(context).object;
 
     return StreamBuilder<BlocState>(
         stream: bloc.stateStream,

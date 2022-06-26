@@ -9,6 +9,7 @@ part 'bloc_event.dart';
 part 'bloc_state.dart';
 part 'object_provider.dart';
 part 'bloc_builder.dart';
+part 'multi_object_provider.dart';
 
 typedef OnEvent<EventT> = Future<void> Function(EventT event);
 

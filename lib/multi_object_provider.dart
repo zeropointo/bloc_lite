@@ -22,6 +22,8 @@ class MultiObjectProvider<ObjectT> extends InheritedWidget {
     T? result;
 
     for (ObjectT o in objectList) {
+      print('[DEBUG] o ${o.runtimeType.toString()} T ${T.toString()}');
+
       if (o.runtimeType is T) {
         result = o as T;
         break;

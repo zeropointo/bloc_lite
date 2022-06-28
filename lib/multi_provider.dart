@@ -1,7 +1,7 @@
 part of 'bloc_lite.dart';
 
-class MultiObjectProvider<ObjectT> extends InheritedWidget {
-  const MultiObjectProvider({
+class MultiProvider<ObjectT> extends InheritedWidget {
+  const MultiProvider({
     Key? key,
     required this.objectList,
     required Widget child,
@@ -9,9 +9,9 @@ class MultiObjectProvider<ObjectT> extends InheritedWidget {
 
   final List<ObjectT> objectList;
 
-  static MultiObjectProvider of<ObjectT>(BuildContext context) {
-    final MultiObjectProvider? result = context
-        .dependOnInheritedWidgetOfExactType<MultiObjectProvider<ObjectT>>();
+  static MultiProvider of<ObjectT>(BuildContext context) {
+    final MultiProvider? result =
+        context.dependOnInheritedWidgetOfExactType<MultiProvider<ObjectT>>();
 
     assert(result != null, 'No ${ObjectT.toString()} found in context');
 
@@ -32,6 +32,6 @@ class MultiObjectProvider<ObjectT> extends InheritedWidget {
   }
 
   @override
-  bool updateShouldNotify(MultiObjectProvider oldWidget) =>
+  bool updateShouldNotify(MultiProvider oldWidget) =>
       objectList != oldWidget.objectList;
 }
